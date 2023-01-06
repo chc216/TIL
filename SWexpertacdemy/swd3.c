@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-char examine(short, char *);
-char findheight(short, char *);
+char examine(short, int *);
+char findheight(short, int *);
 
 int main(void) {
     short N;
@@ -10,8 +10,8 @@ int main(void) {
 
     for(count = 0; count<10; count++){
         family = 0;    
-        scanf("%d", &N);
-        char Building[N];
+        scanf("%hd", &N);
+        int Building[N];
 
         for(short i=0; i<N; i++){
             scanf("%d", &Building[i]);
@@ -29,7 +29,7 @@ int main(void) {
 
 }
 
-char examine(short i, char *Building){
+char examine(short i, int *Building){
     if((Building[i-1]<Building[i] && Building[i-2]<Building[i]) && (Building[i+1]<Building[i] && Building[i+2]<Building[i])){
         return 1;
     }else{
@@ -37,7 +37,7 @@ char examine(short i, char *Building){
     }
 }
 
-char findheight(short i, char *Building){
+char findheight(short i, int *Building){
     char max1, max2;
 
     max1 = Building[i-2]>Building[i-1]?Building[i-2]:Building[i-1];

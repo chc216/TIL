@@ -40,10 +40,12 @@ int sidemax(int *buildingindex, short i, int *Building){
     if(maxbuilding < Building[i-1]){
         maxbuilding = Building[i-1];
         *buildingindex = i-1;
-    }else if(maxbuilding < Building[i+1]){
+    }
+    if(maxbuilding < Building[i+1]){
         maxbuilding = Building[i+1];
         *buildingindex = i+1;
-    }else if(maxbuilding < Building[i+2]){
+    }
+    if(maxbuilding < Building[i+2]){
         maxbuilding = Building[i+2];
         *buildingindex = i+2;
     }

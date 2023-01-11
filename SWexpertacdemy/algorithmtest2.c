@@ -38,27 +38,8 @@ int combination(int cip, int y){
 
 }
 
-int makecase(int k, int i, int xxxx, int x, int y, int tmpcase, int limitline, int *everycase, int howmuchy){
-    
-    if(i == 0) return 0;
+int makecase(int k, int i, int xxxx, int x, int y, int tmpcase, int limitline, int *everycase, int howmuchy);
 
-    if(i == 1){
-        for(int c = howmuchy+1 - i + limitline; c <= k; c++){
-            everycase[head] = xxxx - (tmpcase + (int)pow(10.0, (float)(c-1))) * x + (tmpcase + (int)pow(10.0, (float)(c-1))) * y;
-            head++;
-        }
-        return 0;
-    }
-
-    for(int b = howmuchy+1 - i + limitline; b <= k+1 - i; b++){
-
-        makecase(k, i-1, xxxx, x, y, tmpcase + (int)pow(10.0, (float)(b-1)), limitline, everycase, howmuchy);
-        limitline++;
-
-    }
-
-    return 0;
-}
 
 /*
 *N보다 큰 요소는 다 날리는 함수
@@ -96,17 +77,17 @@ int main(){
     //주어진 N의 자릿수를 구한다.
     cip = cipher(N);
 
-
+    int limitline;
 
 //모든 경우의 수를 담을 수 있는 everycase선언
     int number = 0;
-    for(int ga = cip; ga>2; ga--){
+    for(int ga = cip; ga>=2; ga--){
         for(int ia = 1; ia < ga; ia++){
             number += combination(ga,ia);
         }
 
     }
-    int everycase[number];
+    int everycase[3000]; //위 구문이 정상적으로 모든 경우의 수를 구하지 못했기 때문에 그냥 충분한 3000으로 메모리를 할당함 -->segmantation fault가 안뜸 
 
 
 
@@ -126,18 +107,21 @@ int main(){
             }
             xxxx *= x;
 
+            printf("%d", xxxx);
             
-            for(int howmuchy = 1; howmuchy <= g-1; howmuchy++){
+            for(int howmuchy = g-1; howmuchy >= 1; howmuchy--){
             //y개수 변화 1개에서 g-1개까지 반복(x 또한 적어도 1개는 있어야하기 때문에 g-1로 상한선) 즉 , 변수 i는 y의 개수
 
-                if(howmuchy == 1){
-                    everycase[head] = 10 * x + y;
-                    head ++;
-                    everycase[head] = 10 * y + x;
-                    head ++;    
+                limitline = 0;
+
+                if(howmuchy == 1 ){
+                    for(int u = 1; u <= g; u++){
+                        everycase[head] = xxxx - (int)pow(10.0, (float)(u-1)) * x + (int)pow(10.0, (float)(u-1)) * y;
+                        head++;
+                    }
                     continue;
                 }
-                int limitline = 0;
+
                 for(a = 1; a <= g+1 - howmuchy; a++){
                 //맨 모른쪽 숫자 y의 변화
                     makecase(g, howmuchy-1, xxxx, x, y, (int)pow(10.0, (float)(a-1)), limitline, everycase, howmuchy);
@@ -152,7 +136,7 @@ int main(){
 
 
     //filteroverN(everycase, N);
-
+    filteroverN(everycase, N);
 
 
     for(int m = 0; m<head; m++){
@@ -160,5 +144,27 @@ int main(){
     }
 
     printf("#1 %d", mostbig(everycase));
+    return 0;
+}
+
+int makecase(int k, int i, int xxxx, int x, int y, int tmpcase, int limitline, int *everycase, int howmuchy){
+    
+    if(i == 0) return 0;
+
+    if(i == 1){
+        for(int c = howmuchy+1 - i + limitline; c <= k; c++){
+            everycase[head] = xxxx - (tmpcase + (int)pow(10.0, (float)(c-1))) * x + (tmpcase + (int)pow(10.0, (float)(c-1))) * y;
+            head++;
+        }
+        return 0;
+    }
+
+    for(int b = howmuchy+1 - i + limitline; b <= k+1 - i; b++){
+
+        makecase(k, i-1, xxxx, x, y, tmpcase + (int)pow(10.0, (float)(b-1)), limitline, everycase, howmuchy);
+        limitline++;
+
+    }
+
     return 0;
 }

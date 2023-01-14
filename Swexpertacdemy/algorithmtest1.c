@@ -34,7 +34,7 @@ int overlappingcheck(char tmp){
 /**
  * 현재 맵 위치와 스택, 몇번째 반복중인지에 대한 count변수를 입력받고 count(거리)를 뱉는 함수
 **/
-void move(int *jpointer, int *ipointer, char map[][*ipointer], int *countpinter){
+void move(int *jpointer, int *ipointer, char map[][7], int *countpinter){
     printf("move 함수 호출성공\n");
     //a를 0부터 3까지 반복해가며 왼쪽아래오른쪾위 차례대로 검사 후 이동한다
     for(int a=0; a<4; a++){
@@ -82,8 +82,6 @@ void move(int *jpointer, int *ipointer, char map[][*ipointer], int *countpinter)
     (*countpinter)++;
 
 }
-hihihiihihihihhiihi
-hihiihiihhi
 
 
 

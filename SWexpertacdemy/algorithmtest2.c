@@ -68,11 +68,26 @@ int mostbig(int *everycase){
 
 
 int main(){
+
+    freopen("input.txt", "r", stdin);
+
+    int T = 0;
+    //테스트 케이스 횟수 T 입력
+    scanf("%d", &T);
+
+
+    for(int t = 1; t<=T; t++){
+    //T 만큼 전체 반복
+
+
+
+    
     int cip = 0;
     int N, x, y;
 
-    scanf("%d", &N);
-    scanf("%d %d", &x, &y);
+
+    
+    scanf("%d %d %d", &N, &x, &y);
 
     //주어진 N의 자릿수를 구한다.
     cip = cipher(N);
@@ -143,7 +158,11 @@ int main(){
         printf("%d\n", everycase[m]);
     }
 
-    printf("#1 %d", mostbig(everycase));
+    printf("#%d %d", t, mostbig(everycase));
+    }
+
+
+
     return 0;
 }
 

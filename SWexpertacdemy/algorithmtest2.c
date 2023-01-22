@@ -114,7 +114,7 @@ int main(){
 
         //자리수 2개인 경우의 수부터~ 자리수 cip개인 경우의 수까지
         for(int g = 2; g <= cip; g++){
-            printf("dddddd\n");
+            //printf("dddddd\n");
             int xxxx = 0;
             //자릿수 g에 따라 변하는 xxxx변수 ex)x가 3이면 g가2일때 33
             for(int c = 0; c<g; c++){
@@ -122,7 +122,7 @@ int main(){
             }
             xxxx *= x;
 
-            printf("%d", xxxx);
+            //printf("%d", xxxx);
             
             for(int howmuchy = g-1; howmuchy >= 1; howmuchy--){
             //y개수 변화 1개에서 g-1개까지 반복(x 또한 적어도 1개는 있어야하기 때문에 g-1로 상한선) 즉 , 변수 i는 y의 개수
@@ -154,11 +154,11 @@ int main(){
     filteroverN(everycase, N);
 
 
-    for(int m = 0; m<head; m++){
+   /* for(int m = 0; m<head; m++){
         printf("%d\n", everycase[m]);
-    }
+    }*/
 
-    printf("#%d %d", t, mostbig(everycase));
+    printf("#%d %d\n", t, mostbig(everycase));
     }
 
 

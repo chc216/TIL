@@ -161,10 +161,10 @@ int main(){
     //filteroverN(everycase, N);
     filteroverN(everycase, N);
 
-    printf("---- head : %d", head);
+   /* printf("---- head : %d", head);
    for(int m = 0; m<head; m++){
         printf("%d\n", everycase[m]);
-    }
+    }*/
 
     printf("#%d %d\n", t, mostbig(everycase));
     }

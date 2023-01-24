@@ -23,13 +23,17 @@ int combination(int cip, int y){
     for(int f = cip; f>0; f--){
         cipfactorial *= f;
     }
+    
+    //printf("\ncip factorial : %d\n", cipfactorial);
 
     int yfactorial = 1;
     for(int f = y; f>0; f--){
         yfactorial *= f;
     }
 
-    int cip_minus_yf;
+    //printf("\n y factorial : %d", yfactorial);
+
+    int cip_minus_yf = 1;
     for(int f = cip-y; f>0; f--){
         cip_minus_yf *= f;
     }
@@ -37,6 +41,8 @@ int combination(int cip, int y){
     return cipfactorial / (yfactorial*cip_minus_yf);
 
 }
+
+
 
 int makecase(int k, int i, int xxxx, int x, int y, int tmpcase, int limitline, int *everycase, int howmuchy);
 
@@ -94,15 +100,17 @@ int main(){
 
     int limitline;
 
-//모든 경우의 수를 담을 수 있는 everycase선언
+//모든 경우의 수를 담을 수 있는 everycase 배열 선언
     int number = 0;
     for(int ga = cip; ga>=2; ga--){
-        for(int ia = 1; ia < ga; ia++){
+        for(int ia = 1; ia <= ga; ia++){
             number += combination(ga,ia);
         }
 
     }
-    int everycase[3000]; //위 구문이 정상적으로 모든 경우의 수를 구하지 못했기 때문에 그냥 충분한 3000으로 메모리를 할당함 -->segmantation fault가 안뜸 
+
+    printf("\n-----%d-------\n", number);
+    int everycase[number*2]; //위 구문이 정상적으로 모든 경우의 수를 구하지 못했기 때문에 그냥 충분한 3000으로 메모리를 할당함 -->segmantation fault가 안뜸 
 
 
 
@@ -153,10 +161,10 @@ int main(){
     //filteroverN(everycase, N);
     filteroverN(everycase, N);
 
-
-   /* for(int m = 0; m<head; m++){
+    printf("---- head : %d", head);
+   for(int m = 0; m<head; m++){
         printf("%d\n", everycase[m]);
-    }*/
+    }
 
     printf("#%d %d\n", t, mostbig(everycase));
     }

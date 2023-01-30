@@ -64,3 +64,25 @@
         }
 
         array(b); //배열 b의 크기는 상관없다
+
+
+
+## 1월 24일
+### 삼성 SWexpertacademy 알고리즘 문제 파일 입출력
+1. 파일 입출력(스트림)을 이용한다.  
+* freopen  
+    --> fopen함수와는 달리 스트림 변경이 가능하다  
+    --> stdin, stdout 을 이용하여 printf, scanf 사용 가능  
+
+            FILE* freopen(const char* filename, const char* mode, FILE* stream);
+
+
+            <예시>
+            freopen("input.txt", "r", stdin); //input.txt파일을 read모드로 스트림은 stdin으로 변경하여 읽는다.
+
+            scanf("%d", &~); 
+            //freopen함수로 stdin스트림을 읽어들임으로 파일에서 정수형을 빈칸 단위로 읽어들인다.
+            //파일 포인터는 데이터를 읽은 후 뒤로 자동이동한다.
+            //(형식화된 입출력 참고하기)
+
+이

@@ -611,8 +611,45 @@ SEEK_END : 2 (파일의 끝) //EOF가 놓인 위치를 가리킨다.
 
 >어떤 조건이 만족되는 경우에만 지정된 소스 코드 블록을 컴파일한다.
 
-* #ifdef, #endif, #ifndef, #undef
-> 
+* #ifdef, #endif, #ifndef, #undef  
+
+    *#ifdef, #endif, #ifndef
+
+        #ifdef DEBUG    
+            printf("value = %d\n", value);
+        #endif 
+        //해당 매크로가 정의되어 있으면 #indef~#endif까지의 코드를 컴파일한다.
+
+
+        #ifndef //해당 매크로가 정의되어 있지 않으면 #ifndef ~ #endif 사이의 코드를 컴파일한다.
+
+    * #undef  
+
+           #undef SIZE //SIZE매크로의 정의를 취소한다.
+
+* #if, #else, #elif, #endif  
+매크로의 값에 따라서 컴파일 여부를 결정한다.  
+    * 비교연산자, 사칙연산, 논리연산자 사용가능하다.
+    * 매크로끼리의 비교도 가능하다.  
+
+        
+            (ex)
+            #define NATION 1
+            
+            #if NATION == 1
+                printf("안녕하세요");
+            #elif NATION == 2
+                printf("hello");
+            #else
+                printf("~~");
+            #endif
+
+* defined()  
+괄호 안의 매크로가 정의되어있는지를 확인한다.(조건부 컴파일 지시자에서만 사용가능)
+
+
+
+
 
 
     
